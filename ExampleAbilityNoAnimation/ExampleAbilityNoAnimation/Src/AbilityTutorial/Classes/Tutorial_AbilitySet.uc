@@ -1,4 +1,4 @@
-// Puprose: Tutorial AbilitySet is an open source example to aid with the development of xcom mods. In this example we are going to make the "Personal Shield" ability
+// Purpose: Tutorial AbilitySet is an open source example to aid with the development of xcom mods. In this example we are going to make the "Personal Shield" ability
 // with out  the animation
 
 //TODO: Add in section about custom effects, Animations
@@ -27,7 +27,7 @@ static function array<X2DataTemplate> CreateTemplates()
 
 
 
-static function X2AbilityTemplate AddPersonalShieldAbility() //this is the function that will add our ability to the template array
+static function X2AbilityTemplate AddPersonalShieldAbility() //This is the function that will add our ability to the template array
 {
 	local X2AbilityTemplate                 Template;
 	local X2AbilityCost_ActionPoints        ActionPointCost;
@@ -54,7 +54,7 @@ static function X2AbilityTemplate AddPersonalShieldAbility() //this is the funct
 	Template.eAbilityIconBehaviorHUD = EAbilityIconBehavior_AlwaysShow;
 	Template.IconImage = "img:///UILibrary_PerkIcons.UIPerk_adventshieldbearer_energyshield"; //The Icon used in the tactitical as well as the promotion display
 	Template.bHideOnClassUnlock = false;
-	Template.Hostility = eHostility_Defensive; //Sets how enemies view you're action and proritize you
+	Template.Hostility = eHostility_Defensive; //Sets how enemies view your action and proritize you
 
 	ActionPointCost = new class'X2AbilityCost_ActionPoints';
 	ActionPointCost.iNumPoints = 1;
@@ -62,7 +62,7 @@ static function X2AbilityTemplate AddPersonalShieldAbility() //this is the funct
 	Template.AbilityCosts.AddItem(ActionPointCost); 
 
 	Template.AbilityTargetStyle = default.SelfTarget;	//For this tutorial this is only a personal shield, and only affects the caster
-	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);
+	Template.AbilityTriggers.AddItem(default.PlayerInputTrigger);	//This flags the ability as an activated ability, rather than a passive effect or automatic ability.
 
 
 	ShieldedEffect = CreateShieldedEffect(Template.LocFriendlyName, Template.GetMyLongDescription()); //This creates our effect for the shield
@@ -95,7 +95,7 @@ static function X2Effect_PersistentStatChange CreateShieldedEffect(string Friend
 
 }
 
-//Keeping with the shield them for now, The next ability will be a passive that adds 2 shield to our hero as a passive. 
+//Keeping with the personal shield for now, The next ability will be a passive that adds 2 shield to our hero as a passive. 
 static function X2AbilityTemplate AddPassiveShieldAbility()
 {
 	local X2AbilityTemplate						Template;
